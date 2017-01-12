@@ -1,9 +1,11 @@
 var gameOfLife = {
-  width: 12,
-  height: 12,
-  stepInterval: null,
+  
+  width: 12, 
+  height: 12, // width and height dimensions of the board
+  stepInterval: null, // should be used to hold reference to an interval that is "playing" the game
 
   createAndShowBoard: function () {
+    
     // create <table> element
     var goltable = document.createElement("tbody");
     
@@ -39,7 +41,7 @@ var gameOfLife = {
     // each board cell has an CSS id in the format of: "x-y" 
     // where x is the x-coordinate and y the y-coordinate
     // use this fact to loop through all the ids and assign
-    // them "on-click" events that allow a user to click on 
+    // them "click" events that allow a user to click on 
     // cells to setup the initial state of the game
     // before clicking "Step" or "Auto-Play"
     
@@ -51,6 +53,7 @@ var gameOfLife = {
     // You need to add the click event on EVERY cell on the board
     
     var onCellClick = function (e) {
+      
       // QUESTION TO ASK YOURSELF: What is "this" equal to here?
       
       // how to set the style of the cell when it's clicked
@@ -61,10 +64,11 @@ var gameOfLife = {
         this.className = "dead";
         this.setAttribute('data-status', 'dead');
       }
+      
     };
     
     var cell00 = document.getElementById('0-0');
-    cell00.onclick = onCellClick;
+    cell00.addEventListener('click', onCellClick);
   },
 
   step: function () {
@@ -76,14 +80,13 @@ var gameOfLife = {
     // You need to:
     // 1. Count alive neighbors for all cells
     // 2. Set the next state of all cells based on their alive neighbors
-    
   },
 
   enableAutoPlay: function () {
     // Start Auto-Play by running the 'step' function
-    // automatically repeatedly every fixed time interval
-    
+    // automatically repeatedly every fixed time interval  
   }
+  
 };
 
-  gameOfLife.createAndShowBoard();
+gameOfLife.createAndShowBoard();
