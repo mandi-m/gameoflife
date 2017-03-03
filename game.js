@@ -1,4 +1,4 @@
-//one change
+
 
 var gameOfLife = {
 
@@ -64,6 +64,9 @@ var gameOfLife = {
     // You need to add the click event on EVERY cell on the board
 
     var onCellClick = function (e) {
+      //e is the event 
+      //e.target is the property on the event where you can see what was clicked on
+      //because we are putting the event hadnler on the cell itself, this will refer to that cell
 
       // QUESTION TO ASK YOURSELF: What is "this" equal to here?
 
@@ -78,12 +81,54 @@ var gameOfLife = {
 
     };
 
+    function clear(){
+      // set every cell to dead
+      //var arr = document.getElementsByTagName('td');
+      // for (var i =0; i < arr.length; i++){}
+      this.forEachCell(function(){
+          this.className = 'dead';
+          this.dataset.status = 'dead';
+        });
+    }
+
+    function randomize(){
+     // console.log("this is the ", this);
+      this.forEachCell(function(thisCell) {
+        //this is document.getElementById(w + '-' + h)
+        console.log("I ran!");
+        console.log("this is ", thisCell);
+        var status = Math.random()*10;
+        if (status < 5) {
+          thisCell.className = 'dead';
+          thisCell.dataset.status = 'dead';
+        } else {
+          thisCell.className = 'alive';
+          thisCell.dataset.status = 'alive';
+        }
+      });
+    }
+    document.getElementById("reset_btn").onclick = randomize.bind(gameOfLife);
+
+    // getElementsByTagName(td) returns an array of any elements with the td tag
+    var arrOfTds = document.getElementsByTagName('td');
+    for (var i =0; i < arrOfTds.length; i++){
+      arrOfTds[i].onclick = this.onCellClick();
+      //element.onclick is equal to element.addEventListener(click, callback fxn)
+      //cannot specify THIS in the onCellClick parameters
+    }
+
+    // for loop looping through array, attaching arr[i].onClick(onCellClick)
+
+
+
     var cell00 = document.getElementById('0-0');
     cell00.addEventListener('click', onCellClick);
   },
 
-  step: function () {
 
+
+
+  step: function () {
 
     // Here is where you want to loop through all the cells
     // on the board and determine, based on it's neighbors,
@@ -106,8 +151,8 @@ gameOfLife.createAndShowBoard();
 
 
 
-//get alive neighbors
-//cellID = 'w-h'
+// get alive neighbors
+// cellID = 'w-h'
 // NewGameOfLife.prototype.getAliveNeighbors(cellID){
 //   var wCoord = cellID.split('-')[0];
 //   var hCoord = cellID.split('-')[1];
