@@ -1,7 +1,7 @@
 var gameOfLife = {
 
-  width: 12,
-  height: 12, // width and height dimensions of the board
+  width: 20,
+  height: 20, // width and height dimensions of the board
   stepInterval: 0, // defined in milliseconds.
 
   createAndShowBoard: function () {
