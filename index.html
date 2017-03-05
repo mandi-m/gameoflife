@@ -10,24 +10,38 @@
 
 <body>
   <h2>Game of Life</h2>
+   <div class="row">
+     <div class="col-md-5" style="text-align:justify; PADDING-LEFT: 100px; PADDING-TOP: 50px;"><p>The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves, or, for advanced "players", by creating patterns with particular properties.</p>
+  <ol>
+  <li> Any live cell with two or three live neighbors lives on to the next generation. </li>
+  <li>Any live cell with fewer than two live neighbors dies, as if caused by under-population.</li>
+  <li>Any live cell with more than three live neighbors dies, as if by overcrowding.</li>
+  <li>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.</li> </ol>
+  <p> The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed — in other words, each generation is a pure function of the preceding one.</p>
+  <p>Click on various tiles to the right to make cells "alive", then click Play and watch it evolve! Alernatelys, just click on "Reset Random" to randomly set up the initial configuration.</p>
+
+  <small>Adapted from <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life" target="_blank"> Wikipedia.</a></small></div>
+
+<div class="col-md-5" style="text-align:justify; PADDING-LEFT: 100px; PADDING-TOP: 150px;">
   <table id='board'></table>
-  
+
   <div id='control_panel'>
     <button id='step_btn' class='btn btn-success'>Step</button>
     <button id='play_btn' class='btn btn-primary'>Play</button>
     <button id='reset_btn' class='btn btn-warning'>Reset Random</button>
     <button id='clear_btn' class='btn btn-info'>Clear</button>
   </div>
-  
+  </div>
+  </div>
   <br><br>
 
   <footer class="footer">
     <div class="container">
-      <p class="text-muted">Built by [me] at <a href="http://www.fullstackacademy.com/">Fullstack Academy</a></p>
+      <p class="text-muted">Built by Mandi Meidlinger at <a href="http://www.fullstackacademy.com/">Fullstack Academy</a></p>
     </div>
   </footer>
-  
+
   <script src="game.js"></script>
-  
+
 </body>
 </html>
